@@ -17,7 +17,7 @@ and open the template in the editor.
     </form>
     <br><textarea id="messagesTextArea" rows="10" cols="50"></textarea>
     <script type="text/javascript">
-      var webSocket = new WebSocket("ws://cmsc-495-blackjack.herokuapp.com/ws");
+      var webSocket = new WebSocket("wss://cmsc-495-blackjack.herokuapp.com/ws");
       var messagesTextArea = document.getElementById("messagesTextArea");
       webSocket.onopen = function(message) {processOpen(message);};
       webSocket.onmessage = function(message) {processMessage(message);};
@@ -33,7 +33,7 @@ and open the template in the editor.
         messagesTextArea.value += "Server Closed..."+"\n";
       }
       function processError(message){
-        messagesTextArea.value += "Error..."+"\n";
+        messagesTextArea.value += "Error... "+message+"\n";
       }
       function sendMessage(){
         if (textMessage.value!="close"){
